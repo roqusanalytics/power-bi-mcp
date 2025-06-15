@@ -1,0 +1,38 @@
+[project]
+name = "power-bi-mcp"
+version = "1.0.0"
+description = "Power BI MCP Server - Autonomiškai valdyti Power BI Desktop projektus"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "psutil>=5.9.0",
+    "requests>=2.31.0",
+    "xmltodict>=0.13.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "azure-identity>=1.14.0",
+    "azure-core>=1.29.0",
+    "msal>=1.24.0",
+    "pyodbc>=5.0.0",
+    "python-dotenv>=1.0.0",
+    "pythonnet>=3.0.1",
+]
+
+[project.optional-dependencies]
+windows = [
+    "pythonnet>=3.0.1",
+    "pyodbc>=5.0.0",
+    "pywin32>=306",
+    "comtypes>=1.2.0"
+]
+
+[project.scripts]
+power-bi-mcp = "power_bi_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/power_bi_mcp"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
